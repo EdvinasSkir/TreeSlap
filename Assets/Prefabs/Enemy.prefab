@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 1824052375894383344}
   - component: {fileID: 1824052375894383347}
   - component: {fileID: 4897749786019632102}
+  - component: {fileID: 849224193119076441}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -97,6 +98,26 @@ MonoBehaviour:
   turnManager: {fileID: 0}
   enemyStats: {fileID: 1824052375894383347}
   playerStats: {fileID: 0}
+--- !u!95 &849224193119076441
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1824052375894383345}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 0e0d13df87242bd438b76712d5110eb8, type: 3}
+  m_Controller: {fileID: 9100000, guid: 5b2fe279ec83b8f4d820f177134eed01, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1001 &6848214125140232423
 PrefabInstance:
   m_ObjectHideFlags: 0

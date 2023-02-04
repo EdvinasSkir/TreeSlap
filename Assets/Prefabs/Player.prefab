@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1768920178420871799}
   - component: {fileID: 8360060248058626526}
+  - component: {fileID: 7571665011721871896}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -50,6 +51,26 @@ MonoBehaviour:
   Atk: 2
   CurrentHp: 0
   CurrentAtk: 0
+--- !u!95 &7571665011721871896
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1768920178420871798}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 71118906de5847e41aefdb42d135dc50, type: 3}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &1768920178906094065
 GameObject:
   m_ObjectHideFlags: 0
@@ -158,6 +179,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: stelmuzes
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 71118906de5847e41aefdb42d135dc50,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 0702be0ab3410e04a8358a7ad8984f38, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71118906de5847e41aefdb42d135dc50, type: 3}
 --- !u!4 &6756718312954932668 stripped
