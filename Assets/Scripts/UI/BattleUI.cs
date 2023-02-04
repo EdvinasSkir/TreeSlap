@@ -5,10 +5,12 @@ using TMPro;
 
 public class BattleUI : MonoBehaviour
 {
+    [SerializeField] private FighterStats playerStats;
     [SerializeField] private GameObject textBox;
     [SerializeField] private TMP_Text textBoxText;
     [SerializeField] private GameObject statsPlayer, statsEnemy;
     [SerializeField] private GameObject battleUI, attackUI;
+    [SerializeField] private GameObject slapMeter;
 
     private bool textIsShowing;
 
@@ -68,5 +70,15 @@ public class BattleUI : MonoBehaviour
     public void RunButton() 
     {
         ShowText("You have nowhere to run.");
+    }
+
+    // Attacks
+    public void Attack(float power) 
+    {
+        battleUI.SetActive(false);
+        attackUI.SetActive(false);
+
+        slapMeter.SetActive(true);
+        playerStats.CurrentAtk = power;
     }
 }
