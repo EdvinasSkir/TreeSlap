@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SlapMeter : MonoBehaviour
 {
+    [SerializeField] private TurnManager turnManager;
     [SerializeField] private FighterStats playerStats, enemyStats;
     [SerializeField] private GameObject stopper;
 
@@ -44,6 +45,10 @@ public class SlapMeter : MonoBehaviour
 
                 //Debug.Log(playerStats.Atk * playerStats.CurrentAtk * atkMultiplier);
                 //Debug.Log(hit.transform.gameObject);
+
+                //End the Player's turn
+                turnManager.Turn = Turn.enemy;
+                gameObject.SetActive(false);
             }
         }
     }

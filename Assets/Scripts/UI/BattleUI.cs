@@ -40,6 +40,7 @@ public class BattleUI : MonoBehaviour
         statsEnemy.SetActive(false);
         battleUI.SetActive(false);
         attackUI.SetActive(false);
+        slapMeter.SetActive(false);
 
         // Enable ONLY Text
         textBox.SetActive(true);
@@ -48,7 +49,7 @@ public class BattleUI : MonoBehaviour
     }
 
     // Return to lowest BattleUI
-    private void ShowBattleUI() 
+    public void ShowBattleUI() 
     {
         textBox.SetActive(false);
 

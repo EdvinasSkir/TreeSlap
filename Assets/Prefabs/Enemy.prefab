@@ -140,6 +140,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1824052375894383344}
   - component: {fileID: 1824052375894383347}
+  - component: {fileID: 4897749786019632102}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -179,3 +180,18 @@ MonoBehaviour:
   Atk: 2
   CurrentHp: 0
   CurrentAtk: 0
+--- !u!114 &4897749786019632102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1824052375894383345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 181e2573f271a7c4aa8f0d9e0e4af920, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turnManager: {fileID: 0}
+  enemyStats: {fileID: 1824052375894383347}
+  playerStats: {fileID: 0}
