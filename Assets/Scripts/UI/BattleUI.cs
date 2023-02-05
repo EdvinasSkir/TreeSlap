@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class BattleUI : MonoBehaviour
 {
+    [SerializeField] private Object titleScene;
     [SerializeField] private FighterStats playerStats;
     [SerializeField] private GameObject textBox;
     [SerializeField] private TMP_Text textBoxText;
@@ -12,6 +14,7 @@ public class BattleUI : MonoBehaviour
     [SerializeField] private GameObject battleUI, attackUI;
     [SerializeField] private GameObject slapMeter;
 
+    [HideInInspector] public bool HasWon;
     private bool textIsShowing;
 
     private void Update()
@@ -19,10 +22,22 @@ public class BattleUI : MonoBehaviour
         // Finish reading text if it's on-screen
         if (textIsShowing && Input.GetKeyDown(KeyCode.Mouse0)) 
         {
-            textIsShowing = false;
-            ShowBattleUI();
-            statsPlayer.SetActive(true);
-            statsEnemy.SetActive(true);
+            if (HasWon) 
+            {
+                SceneManager.LoadSceneAsync("Title");
+            }
+            else if (!playerStats.isDead)
+            {
+                textIsShowing = false;
+                ShowBattleUI();
+                statsPlayer.SetActive(true);
+                statsEnemy.SetActive(true);
+            }
+            else 
+            {
+                SceneManager.LoadSceneAsync("Title");
+            }
+
         }
 
         // Close deeper Battle menus
@@ -33,7 +48,7 @@ public class BattleUI : MonoBehaviour
     }
 
     // Show Text Box
-    private void ShowText(string text) 
+    public void ShowText(string text) 
     {
         // Disable all UI except Text
         statsPlayer.SetActive(false);

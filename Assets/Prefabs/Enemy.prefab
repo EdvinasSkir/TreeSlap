@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 1824052375894383347}
   - component: {fileID: 4897749786019632102}
   - component: {fileID: 849224193119076441}
+  - component: {fileID: 8430293747690995396}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -79,6 +80,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59a783cc3db8d9a4899c8545842c268f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 849224193119076441}
   Hp: 10
   Atk: 2
   CurrentHp: 0
@@ -95,9 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 181e2573f271a7c4aa8f0d9e0e4af920, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turnManager: {fileID: 0}
+  enemyAnim: {fileID: 849224193119076441}
   enemyStats: {fileID: 1824052375894383347}
-  playerStats: {fileID: 0}
 --- !u!95 &849224193119076441
 Animator:
   serializedVersion: 5
@@ -118,6 +119,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &8430293747690995396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1824052375894383345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c144abd717d211f4cb052295111668c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6848214125140232423
 PrefabInstance:
   m_ObjectHideFlags: 0

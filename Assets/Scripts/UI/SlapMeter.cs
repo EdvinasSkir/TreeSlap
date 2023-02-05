@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class SlapMeter : MonoBehaviour
 {
+    [SerializeField] private BattleUI battleUI;
+    [SerializeField] private GameObject SlapUI;
+    [SerializeField] private GameObject victoryUI;
+    [SerializeField] private Animator playerAnim;
     [SerializeField] private TurnManager turnManager;
     [SerializeField] private FighterStats playerStats, enemyStats;
     [SerializeField] private GameObject stopper;
@@ -20,15 +24,15 @@ public class SlapMeter : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Mouse0)) 
+        if (SlapUI.activeSelf && (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Mouse0))) 
         {
             //Debug.DrawRay(stopper.transform.position, new Vector3(0, 0, 20), Color.white, 1f);
+            float atkMultiplier = 1;
 
-            if (Physics.Raycast(stopper.transform.position, new Vector3(0, 0, 1), out var hit)) 
+            if (Physics.Raycast(stopper.transform.position, new Vector3(0, 0, 1), out var hit))
             {
-                float atkMultiplier = 1;
                 var str = hit.transform.gameObject.GetComponent<SlapArea>();
-                if (str.slapStrength == SlapStrength.bad) 
+                if (str.slapStrength == SlapStrength.bad)
                 {
                     atkMultiplier = 0.5f;
                 }
@@ -41,17 +45,40 @@ public class SlapMeter : MonoBehaviour
                     atkMultiplier = 2f;
                 }
 
-                enemyStats.CurrentHp -= playerStats.Atk * playerStats.CurrentAtk * atkMultiplier;
-
-                //Debug.Log(playerStats.Atk * playerStats.CurrentAtk * atkMultiplier);
-                //Debug.Log(hit.transform.gameObject);
-
-                //End the Player's turn
-                turnManager.Turn = Turn.enemy;
-                gameObject.SetActive(false);
+                SlapUI.SetActive(false);
+                playerAnim.SetTrigger("slap");
+                StartCoroutine(ExecuteCombat(atkMultiplier));
             }
         }
     }
 
-    
+    private IEnumerator ExecuteCombat(float atkMultiplier) 
+    {
+        // Wait time till slap
+        yield return new WaitForSeconds(0.160f + 0.160f * 4);
+
+        enemyStats.CurrentHp -= playerStats.Atk * playerStats.CurrentAtk * atkMultiplier;
+
+        // Wait time after slap
+        yield return new WaitForSeconds(0.160f + 0.160f * 5 + 1.160f);
+
+        // Wait for enemy recovery
+        yield return new WaitForSeconds(0.160f * 5);
+
+        //Debug.Log(playerStats.Atk * playerStats.CurrentAtk * atkMultiplier);
+        //Debug.Log(hit.transform.gameObject);
+
+        //End the Player's turn
+        if (enemyStats.CurrentHp > 0)
+        {
+            turnManager.Turn = Turn.enemy;
+        }
+        else 
+        {
+            battleUI.HasWon = true;
+            victoryUI.SetActive(true);
+            battleUI.ShowText("Shadow Professor Oak has been defeated! You are the champion of TreeSlap Tournament 2023 and will forever remain in the Hall of Fame!");
+            // Victory!
+        }
+    }
 }
